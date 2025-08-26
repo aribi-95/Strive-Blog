@@ -1,0 +1,35 @@
+### Test server
+GET http://localhost:4000/
+
+### Lista autori
+GET http://localhost:4000/authors
+
+### Singolo autore
+GET http://localhost:4000/authors/68addfa08c7a6e0149f86118
+
+### Crea nuovo autore
+POST http://localhost:4000/authors
+Content-Type: application/json
+
+{
+  "nome": "Mario",
+  "cognome": "Rossi",
+  "email": "mario.rossi@example.com",
+  "dataDiNascita": "1990-05-10",
+  "avatar": "https://i.pravatar.cc/150?u=mario"
+}
+
+### Aggiorna autore
+PUT http://localhost:4000/authors/68addfa08c7a6e0149f86118
+Content-Type: application/json
+
+{
+  "nome": "Mario",
+  "cognome": "Verdi",
+  "email": "mario.verdi@example.com",
+  "dataDiNascita": "1990-05-10",
+  "avatar": "https://i.pravatar.cc/150?u=marioupdated"
+}
+
+### Cancella autore
+DELETE http://localhost:4000/authors/68addfa08c7a6e0149f86118
