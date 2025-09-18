@@ -13,5 +13,5 @@ export const logout = async () => {
     if (token) await axios.post("/logout").catch(() => {});
     localStorage.removeItem("token");
     setAuthToken(null);
-    window.location.href = "login";
+    window.location.href = "#/login";
 };
