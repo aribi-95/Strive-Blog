@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
-const { Schema, model } = mongoose; // ✅ Schema è corretto
-
-const authorSchema = new Schema(
+const authorSchema = new mongoose.Schema(
     {
-        nome: { type: String, required: true },
-        cognome: { type: String, required: true },
         email: { type: String, required: true, unique: true },
-        dataDiNascita: { type: String, required: true },
+        password: { type: String },
+        googleId: { type: String, unique: true, sparse: true },
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+        birthDate: { type: String },
         avatar: { type: String },
     },
     { timestamps: true }
 );
 
-export default model("Author", authorSchema);
+export default mongoose.model("Author", authorSchema);

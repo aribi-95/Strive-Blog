@@ -1,0 +1,29 @@
+### Registrazione nuovo autore
+POST http://localhost:4000/api/v1/authors
+Content-Type: application/json
+
+{
+  "firstName": "Luca",
+  "lastName": "Bianchi",
+  "email": "luca.bianchi@example.com",
+  "password": "password123",
+  "birthDate": "1992-03-15",
+  "avatar": "https://i.pravatar.cc/150?u=luca"
+}
+
+### Login autore
+POST http://localhost:4000/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "falida2483@mirarmax.com",
+  "password": "asdf1234"
+}
+
+### Me - ottieni info utente dal token
+GET http://localhost:4000/api/v1/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YWY0ODI4YzRmYzY1ZDY0MmNhNTUiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MTc1NSwiZXhwIjoxNzU3ODgwNTU1fQ.SToeJLVnepGlMo87IXopuwtlicbpl2GRZ9WtgCNKc8Q
+
+### Logout autore
+POST http://localhost:4000/api/v1/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YWY0ODI4YzRmYzY1ZDY0MmNhNTUiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MTc1NSwiZXhwIjoxNzU3ODgwNTU1fQ.SToeJLVnepGlMo87IXopuwtlicbpl2GRZ9WtgCNKc8Q

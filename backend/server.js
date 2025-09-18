@@ -2,86 +2,55 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import passport from "passport";
+
+import authorRouter from "./routers/author.router.js";
+import postRouter from "./routers/post.router.js";
+import authRouter from "./routers/auth.router.js";
+import { authenticate } from "./utils/auth.js";
+import { setupGoogleStrategy } from "./config/passport.config.js";
 
 dotenv.config();
 
-const app = express();
+const server = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(express.json()); // per leggere JSON nel body
-app.use(cors());
+// Middlewares
+server.use(express.json());
+server.use(cors());
 
-// Connessione ad Atlas
-mongoose.connect(process.env.MONGODB_CONNECTION_URI);
+// Passport
+setupGoogleStrategy();
+server.use(passport.initialize());
 
-// Evento connessione
-mongoose.connection.on("connected", () => {
+// Connessione a MongoDB Atlas
+try {
+    await mongoose.connect(process.env.MONGODB_CONNECTION_URI);
     console.log("Connesso a MongoDB Atlas");
-});
-
-mongoose.connection.on("error", (err) => {
-    console.error("❌ Errore connessione MongoDB:", err);
-});
+} catch (err) {
+    console.error("Errore connessione MongoDB:", err);
+    process.exit(1);
+}
 
 // Rotta test
-app.get("/", (req, res) => {
+server.get("/", (req, res) => {
     res.send("Server funziona 🚀");
 });
 
-app.listen(PORT, () => {
+// Routes
+server.use("/api/v1", authRouter); // include /login, /login-google, /callback-google, ecc.
+server.use("/api/v1/authors", authenticate, authorRouter);
+server.use("/api/v1/posts", authenticate, postRouter);
+
+// Middleware di error handling
+server.use((err, req, res, next) => {
+    console.error("Unhandled server error:", err);
+    res.status(err.status || 500).json({
+        error: err.message || "Internal Server Error",
+    });
+});
+
+// Avvio server
+server.listen(PORT, () => {
     console.log(`Server avviato su http://localhost:${PORT}`);
-});
-
-// ------------------------------------------------------------------------ //
-
-import Author from "./models/Author.js";
-
-// GET /authors -> lista
-app.get("/authors", async (req, res) => {
-    const authors = await Author.find();
-    res.json(authors);
-});
-
-// GET /authors/:id -> singolo autore
-app.get("/authors/:id", async (req, res) => {
-    const author = await Author.findById(req.params.id);
-    if (author) res.json(author);
-    else res.status(404).json({ message: "Autore non trovato" });
-});
-
-// POST /authors -> crea nuovo autore
-app.post("/authors", async (req, res) => {
-    try {
-        const newAuthor = new Author(req.body);
-        await newAuthor.save();
-        res.status(201).json(newAuthor);
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
-});
-
-// PUT /authors/:id -> modifica autore
-app.put("/authors/:id", async (req, res) => {
-    try {
-        const updated = await Author.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
-        if (updated) res.json(updated);
-        else res.status(404).json({ message: "Autore non trovato" });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
-});
-
-// DELETE /authors/:id -> cancella autore
-app.delete("/authors/:id", async (req, res) => {
-    try {
-        const deleted = await Author.findByIdAndDelete(req.params.id);
-        if (deleted) res.json({ message: "Autore eliminato" });
-        else res.status(404).json({ message: "Autore non trovato" });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
 });

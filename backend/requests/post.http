@@ -1,0 +1,79 @@
+### Lista post (paginata)
+GET http://localhost:4000/api/v1/posts?page=1&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM5YWRlM2Q2NmU2ZTYyODZjNzcyZTMiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ3OTk0LCJleHAiOjE3NTgwNzY3OTR9.NmJaOkxkSLmWvTt1tWJgR2UswrujwITrjn3BR8LYSBc
+
+### Singolo post
+GET http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YmM4OTM3Njk2ZWRhNzJjNDYzM2QiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ1ODA5LCJleHAiOjE3NTgwNzQ2MDl9.VeUJHsMPQH--n5WsbVtjTZQ59Pkpq1YdgN0HHVhu_Ts
+
+### Crea un blog post per un autore
+POST http://localhost:4000/api/v1/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YmM4OTM3Njk2ZWRhNzJjNDYzM2QiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ1ODA5LCJleHAiOjE3NTgwNzQ2MDl9.VeUJHsMPQH--n5WsbVtjTZQ59Pkpq1YdgN0HHVhu_Ts
+Content-Type: application/json
+
+{
+  "category": "Prova",
+  "title": "Prova",
+  "cover": "https://picsum.photos/800/400?random=1",
+  "readTime": {
+    "value": 5,
+    "unit": "minuti"
+  },
+  "author": "falida2483@mirarmax.com",
+  "content": "<p>Prova</p>"
+}
+
+### Aggiorna post (PUT)
+PUT http://localhost:4000/api/v1/posts/68c9b0277480e02e0188f778
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM5YWRlM2Q2NmU2ZTYyODZjNzcyZTMiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ3OTk0LCJleHAiOjE3NTgwNzY3OTR9.NmJaOkxkSLmWvTt1tWJgR2UswrujwITrjn3BR8LYSBc
+Content-Type: application/json
+
+{
+  "title": "Dolci della tradizione: tiramisù e oltre",
+  "category": "Cucina",
+  "readTime": {
+    "value": 2,
+    "unit": "minuti"
+  },
+  "content": "Il tiramisù è forse il dolce italiano più famoso al mondo, ma la tradizione dolciaria italiana offre una varietà infinita di prelibatezze. Preparare un tiramisù perfetto richiede attenzione alle proporzioni di mascarpone, uova e zucchero, nonché alla qualità dei savoiardi e del caffè. Ma oltre al tiramisù, ci sono dolci regionali altrettanto straordinari: cannoli siciliani, pastiera napoletana, e castagnaccio toscano. Ogni dolce racconta una storia, una cultura e un territorio, trasformando la cucina in un viaggio sensoriale. Per ottenere il massimo, è consigliabile utilizzare ingredienti freschi e genuini, rispettando le ricette tradizionali ma aggiungendo sempre un tocco personale. Infine, condividere questi dolci in famiglia o con amici è il modo migliore per celebrare la convivialità e il piacere della buona cucina."
+}
+
+### DELETE blog post
+DELETE http://localhost:4000/api/v1/posts/68b5c9897fd3294cb444cd31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjMzOSwiZXhwIjoxNzU3ODgxMTM5fQ.ZpQ6k9_hZ7mCjHFGuhyVXJMlERlggX-g8-HYKxXCPxc
+
+### Tutti i post di un autore
+GET http://localhost:4000/api/v1/posts/author/68c6b20828c4fc65d642ca6b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjMzOSwiZXhwIjoxNzU3ODgxMTM5fQ.ZpQ6k9_hZ7mCjHFGuhyVXJMlERlggX-g8-HYKxXCPxc
+
+### Commenti: lista
+GET http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YmM4OTM3Njk2ZWRhNzJjNDYzM2QiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ1ODA5LCJleHAiOjE3NTgwNzQ2MDl9.VeUJHsMPQH--n5WsbVtjTZQ59Pkpq1YdgN0HHVhu_Ts
+
+### Commenti: singolo
+GET http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416/comments/68c6b43528c4fc65d642ca9a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjMzOSwiZXhwIjoxNzU3ODgxMTM5fQ.ZpQ6k9_hZ7mCjHFGuhyVXJMlERlggX-g8-HYKxXCPxc
+
+### Aggiungi commento
+POST http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416/comments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjMzOSwiZXhwIjoxNzU3ODgxMTM5fQ.ZpQ6k9_hZ7mCjHFGuhyVXJMlERlggX-g8-HYKxXCPxc
+Content-Type: application/json
+
+{
+  "commenterName": "Luca Bianchi",
+  "commenterEmail": "luca.bianchi@example.com",
+  "text": "Great article!"
+}
+
+### Modifica commento
+PUT http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416/comment/68c6b43528c4fc65d642ca9a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjMzOSwiZXhwIjoxNzU3ODgxMTM5fQ.ZpQ6k9_hZ7mCjHFGuhyVXJMlERlggX-g8-HYKxXCPxc
+Content-Type: application/json
+
+{
+  "text": "Updated comment text"
+}
+
+### Elimina commento
+DELETE http://localhost:4000/api/v1/posts/68c6ccf037696eda72c46416/comment/68c9a61ed66e6e6286c77191
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YmM4OTM3Njk2ZWRhNzJjNDYzM2QiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ1ODA5LCJleHAiOjE3NTgwNzQ2MDl9.VeUJHsMPQH--n5WsbVtjTZQ59Pkpq1YdgN0HHVhu_Ts

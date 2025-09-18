@@ -1,35 +1,43 @@
-### Test server
-GET http://localhost:4000/
-
-### Lista autori
-GET http://localhost:4000/authors
+### Lista autori (paginata)
+GET http://localhost:4000/api/v1/authors?page=1&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YmM4OTM3Njk2ZWRhNzJjNDYzM2QiLCJlbWFpbCI6ImZhbGlkYTI0ODNAbWlyYXJtYXguY29tIiwiaWF0IjoxNzU4MDQ3MDY5LCJleHAiOjE3NTgwNzU4Njl9.TC0jLKc9k-jm_YPrgRnet6WJGyTeJbkVEGppvr5ETpA
+Content-Type: application/json
 
 ### Singolo autore
-GET http://localhost:4000/authors/68addfa08c7a6e0149f86118
+GET http://localhost:4000/api/v1/authors/68c6b20828c4fc65d642ca6b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjA3NywiZXhwIjoxNzU3ODgwODc3fQ.75tGtL-eonhEJCNqWT_3iHxYOLnCP4FwbmCwUo_0gHM
 
 ### Crea nuovo autore
-POST http://localhost:4000/authors
+POST http://localhost:4000/api/v1/authors
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjA3NywiZXhwIjoxNzU3ODgwODc3fQ.75tGtL-eonhEJCNqWT_3iHxYOLnCP4FwbmCwUo_0gHM
 Content-Type: application/json
 
 {
-  "nome": "Mario",
-  "cognome": "Rossi",
-  "email": "mario.rossi@example.com",
-  "dataDiNascita": "1990-05-10",
+  "firstName": "Mario",
+  "lastName": "Rossi",
+  "email": "falida2483@mirarmax.com",
+  "password": "Password123!",
+  "birthDate": "1990-05-10",
   "avatar": "https://i.pravatar.cc/150?u=mario"
 }
 
 ### Aggiorna autore
-PUT http://localhost:4000/authors/68addfa08c7a6e0149f86118
+PUT http://localhost:4000/api/v1/authors/68b5c61f9620517684b43e3d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjA3NywiZXhwIjoxNzU3ODgwODc3fQ.75tGtL-eonhEJCNqWT_3iHxYOLnCP4FwbmCwUo_0gHM
 Content-Type: application/json
 
 {
-  "nome": "Mario",
-  "cognome": "Verdi",
+  "firstName": "Mario",
+  "lastName": "Verdi",
   "email": "mario.verdi@example.com",
-  "dataDiNascita": "1990-05-10",
+  "birthDate": "1990-05-10",
   "avatar": "https://i.pravatar.cc/150?u=marioupdated"
 }
 
-### Cancella autore
-DELETE http://localhost:4000/authors/68addfa08c7a6e0149f86118
+### Elimina autore
+DELETE http://localhost:4000/api/v1/authors/68bea2e14d918c8a7451a4e2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjA3NywiZXhwIjoxNzU3ODgwODc3fQ.75tGtL-eonhEJCNqWT_3iHxYOLnCP4FwbmCwUo_0gHM
+
+### Blog posts di un autore
+GET http://localhost:4000/api/v1/authors/68c6b20828c4fc65d642ca6b/posts?page=1&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OGM2YjFhYTI4YzRmYzY1ZDY0MmNhNjIiLCJlbWFpbCI6Imx1Y2EuYmlhbmNoaUBleGFtcGxlLmNvbSIsImlhdCI6MTc1Nzg1MjA3NywiZXhwIjoxNzU3ODgwODc3fQ.75tGtL-eonhEJCNqWT_3iHxYOLnCP4FwbmCwUo_0gHM
