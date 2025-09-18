@@ -78,7 +78,7 @@ export default function Login({ setUser }) {
                 {/* Login con Google */}
                 <a
                     className="btn btn-outline-danger w-100"
-                    href="http://localhost:4000/api/v1/login-google"
+                    href={`${import.meta.env.VITE_API_URL}/login-google`}
                 >
                     <i className="bi bi-google me-2"></i> Accedi con Google
                 </a>
