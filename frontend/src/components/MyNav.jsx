@@ -69,7 +69,9 @@ export default function MyNav({
                                         Crea Post
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item onClick={logout}>
+                                    <Dropdown.Item
+                                        onClick={() => logout(setUser)}
+                                    >
                                         Logout
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
