@@ -129,7 +129,7 @@ router.get(
     passport.authenticate("google", { session: false }),
     (req, res) => {
         const token = req.user.jwt;
-        res.redirect(`${process.env.FRONTEND_HOST}/login?jwt=${token}`);
+        res.redirect(`${process.env.FRONTEND_HOST}/?jwt=${token}`);
     }
 );
 
