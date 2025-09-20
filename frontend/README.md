@@ -1,12 +1,12 @@
-# React + Vite
+# Strive Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Benvenuti su Strive Blog, un sito dedicato a chi vuole pubblicare e leggere articoli sugli argomenti più disparati! 
+Gli utenti, che devono essere registrati, possono creare, modificare e visualizzare post, filtrare contenuti per autore e cercare articoli tramite una barra di ricerca.  
 
-Currently, two official plugins are available:
+Il progetto è sviluppato con **React** per il frontend e **Node.js/Express** per il backend, con autenticazione basata su **JWT**.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funzionalità principali
+- Registrazione e login classico
+- Login con Google
+- Creazione, modifica e visualizzazione di post
+- Possibilità di aggiungere commenti
