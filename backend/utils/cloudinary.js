@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config(); // IMPORTANTISSIMO: carichiamo le variabili d'ambiente subito
+dotenv.config();
 
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";

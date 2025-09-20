@@ -34,11 +34,11 @@ try {
 
 // Rotta test
 server.get("/", (req, res) => {
-    res.send("Server funziona 🚀");
+    res.send("Server funziona!");
 });
 
 // Routes
-server.use("/api/v1", authRouter); // include /login, /login-google, /callback-google, ecc.
+server.use("/api/v1", authRouter);
 server.use("/api/v1/authors", authenticate, authorRouter);
 server.use("/api/v1/posts", authenticate, postRouter);
 

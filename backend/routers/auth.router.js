@@ -117,13 +117,11 @@ router.get("/me", authenticate, (req, res) => {
  * ---------------------------
  */
 
-// Step 1: avvia il login con Google
 router.get(
     "/login-google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-// Step 2: callback da Google -> genera JWT e redirect al frontend
 router.get(
     "/callback-google",
     passport.authenticate("google", { session: false }),
